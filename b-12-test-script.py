@@ -22,11 +22,9 @@ Steps performed by this script:
 import json
 import hmac
 import hashlib
-import logging
 import requests
 from datetime import datetime, timezone
 
-logger = logging.getLogger("__name__")
 
 NAME = "suraj"
 EMAIL = "suraj.dev.work@gmail.com"
@@ -71,8 +69,8 @@ if response.status_code == 200:
     try:
         data = response.json()
         receipt = data.get("receipt")
-        logger.info(f"Submission successful! Receipt: {receipt}")
+        print(f"Submission successful! Receipt: {receipt}")
     except Exception as ex:
-        logger.exception(f"Success, but failed to parse JSON: {response.text}, Error: {ex}")
+        print(f"Success, but failed to parse JSON: {response.text}, Error: {ex}")
 else:
-    logger.error(f"Request failed: {response}")
+    print(f"Request failed: {response}")
